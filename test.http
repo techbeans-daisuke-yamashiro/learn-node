@@ -1,0 +1,13 @@
+post http://localhost:3000/auth/login
+Content-Type: application/json
+
+{"user":"Alice","password":"password"}
+
+###
+get http://localhost:3000/protected
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFsaWNlIiwiZW1haWwiOiJhbGljZUBwcmlzbWEuaW8iLCJpYXQiOjE2NzI0NTg3ODksImV4cCI6MTY3MjQ1OTM4OX0.lVgnIKIEORpUBNaZJdRtiT3V_2kDJx_d9uXUyaOJTwo
+
+
+###
+get http://localhost:3000/user/all
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFsaWNlIiwiZW1haWwiOiJhbGljZUBwcmlzbWEuaW8iLCJpYXQiOjE2NzI0NTg1MzMsImV4cCI6MTY3MjQ1OTEzM30.eILbSM0QxJqT9LZxgdyBet6uTG7rXWawEJbT7_JTNhk
