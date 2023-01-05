@@ -51,7 +51,7 @@ npx prisma generate
  ```
 ##### レスポンス(JSON)
 ```json
-アクセストークン
+①アクセストークンが有効な場合は下記メッセージが返却されます。
 {
   "message": "protected contents."
 }
