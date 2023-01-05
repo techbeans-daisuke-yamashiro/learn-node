@@ -1,13 +1,23 @@
-post http://localhost:3000/auth/login
+@server=localhost
+@port=3000
+@base_url=http://{{server}}:{{port}}
+@user=Alice
+@password=password
+
+
+# @name login
+POST {{base_url}}/auth/login HTTP/1.1
 Content-Type: application/json
 
-{"user":"Alice","password":"password"}
+{"user":"{{user}}","password":"{{password}}"}
 
 ###
-get http://localhost:3000/protected
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFsaWNlIiwiZW1haWwiOiJhbGljZUBwcmlzbWEuaW8iLCJpYXQiOjE2NzI0NTg3ODksImV4cCI6MTY3MjQ1OTM4OX0.lVgnIKIEORpUBNaZJdRtiT3V_2kDJx_d9uXUyaOJTwo
+@access_token=Bearer {{login.response.body.$.token}}
 
-
+# @name protected
+get {{base_url}}/protected HTTP/1.1
+Authorization: {{access_token}}
 ###
-get http://localhost:3000/user/all
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFsaWNlIiwiZW1haWwiOiJhbGljZUBwcmlzbWEuaW8iLCJpYXQiOjE2NzI0NTg1MzMsImV4cCI6MTY3MjQ1OTEzM30.eILbSM0QxJqT9LZxgdyBet6uTG7rXWawEJbT7_JTNhk
+# @name all_user
+get {{base_url}}/user/all HTTP/1.1
+Authorization: {{access_token}}

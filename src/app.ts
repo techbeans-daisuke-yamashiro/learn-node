@@ -1,10 +1,9 @@
 import userController from './controllers/userController';
 import authController from './controllers/authController';
 import { validateToken } from './services/jwtValidate';
-import express, { NextFunction, Request, response, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import express, { Request,  Response } from 'express';
+const config = require('./config');
 const app = express();
-const port = 3000;
 
 //express.jsonを読み込み
 app.use(express.json());
@@ -19,7 +18,7 @@ app.get('/', async (req: Request, res: Response) => {
 
 
 //express起動
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(config.port, config.host, () => console.log(`Example app listening on port ${config.port}!`));
 
 //JWT認証のテスト
 app.get('/protected', validateToken, async (req: Request, res: Response) => {
