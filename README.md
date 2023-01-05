@@ -36,6 +36,9 @@ npx prisma generate
     "password": "(パスワード)"
 }
  ```
+- seederで追加されるユーザー名：Alice / John / Yumi
+- seederで設定されるパスワード：password
+
 ##### レスポンス(JSON)
 ```json
 {
